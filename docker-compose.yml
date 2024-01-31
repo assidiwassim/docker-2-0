@@ -4,7 +4,7 @@ services:
   nodejs-service:
     container_name: nodejs-container
     build: 
-      context: .
+      context: ./
       dockerfile: Dockerfile
     ports:
       - "3001:3000"
