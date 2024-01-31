@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log("Error = ",err));
 
 app.get("/", (req, res) => {
-  res.send("Hello World - Le bon développeur community !");
+  res.send("Hello community .... !");
 });
 
 app.get("/items", (req, res) => {
@@ -39,4 +39,4 @@ app.post("/items/add", (req, res) => {
 
 const port = 3000;
 
-app.listen(port, () => console.log("Server running on port 3000..."));
+app.listen(port, () => console.log("Server running on port 3000"));

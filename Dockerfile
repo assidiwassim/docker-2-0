@@ -14,4 +14,4 @@ RUN npm install
 COPY . .
 
 # Define the command to run the app
-CMD [ "npm","start", "app.js" ]
+CMD [ "npm","run","dev" ]

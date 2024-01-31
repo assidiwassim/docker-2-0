@@ -7,14 +7,34 @@ services:
     container_name: nodejs-container
     build: 
       context: .
-      dockerfile: dockerfile-dev
+      dockerfile: Dockerfile
     ports:
       - "3001:3000"
+    volumes:
+      - ./:/my-workspace
+    networks:
+      - ja3fer-net
+    depends_on:
+        - mongodb-service
 
   mongodb-service:
     container_name: mongo-container
     image: mongo:latest
     ports:
       - "27018:27017"
+    volumes: #  volume to persist data outside the container
+      - mongodb-volume:/data/db
+    networks:
+      - ja3fer-net
+
+networks:
+  ja3fer-net:
+     driver: bridge 
+
+volumes:
+  mongodb-volume:
+    
+
+    
 
 
