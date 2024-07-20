@@ -1,38 +1,29 @@
 version: '3.9'
+name: "project-stack"
 
 services:
-  nodejs-service:
-    container_name: nodejs-container
-    build: 
-      context: ./
-      dockerfile: Dockerfile
+
+  my-nodejs-app:
+    build: .
     ports:
       - "3001:3000"
-    volumes:
-      - ./:/my-workspace
-    networks:
-      - ja3fer-net
     depends_on:
-        - mongodb-service
+        - my-mongodb
+    networks:
+      - my-network
 
-  mongodb-service:
-    container_name: mongo-container
+  my-mongodb: 
     image: mongo:latest
     ports:
-      - "27018:27017"
-    volumes: #  volume to persist data outside the container
+      - "27011:27017"
+    volumes:
       - mongodb-volume:/data/db
     networks:
-      - ja3fer-net
-
-networks:
-  ja3fer-net:
-     driver: bridge 
+      - my-network
 
 volumes:
   mongodb-volume:
     
-
-    
-
-
+networks:
+  my-network:
+     driver: bridge 

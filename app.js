@@ -8,11 +8,11 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 
-const connectInternalNetwork = "mongodb://mongodb-service:27017/my-db";
-const connectExternalNetwork = "mongodb://localhost:27018/my-db";
+const connectInternalDatabase = "mongodb://my-mongodb:27017/my-db"; //(1)
+//const connectExternalDatabase = "mongodb://localhost:27011/my-db"; //(2)
 // Connect to MongoDB
 mongoose
-  .connect(connectInternalNetwork, { useNewUrlParser: true })
+  .connect(connectInternalDatabase, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("Error = ",err));
 
